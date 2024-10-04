@@ -8,11 +8,13 @@
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.11.2"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.11.0",
     "@eslint/js": "^9.8.0",
+    "@module-federation/enhanced": "~0.6.0",
     "@nx/cypress": "19.8.3",
     "@nx/eslint": "19.8.3",
     "@nx/eslint-plugin": "19.8.3",
