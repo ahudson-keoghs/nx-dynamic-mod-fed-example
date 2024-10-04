@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "dynamicremote1/Module": ["apps/dynamicremote1/src/remote-entry.ts"],
       "staticremote1/Module": ["apps/staticremote1/src/remote-entry.ts"]
     }
   },

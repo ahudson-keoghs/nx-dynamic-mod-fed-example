@@ -1,0 +1,63 @@
+{
+  "name": "dynamichost",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/dynamichost/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/dynamichost",
+        "main": "apps/dynamichost/src/main.ts",
+        "tsConfig": "apps/dynamichost/tsconfig.app.json",
+        "rspackConfig": "apps/dynamichost/rspack.config.ts",
+        "assets": [
+          "apps/dynamichost/src/favicon.ico",
+          "apps/dynamichost/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/rspack:module-federation-dev-server",
+      "options": {
+        "buildTarget": "dynamichost:build:development",
+        "port": 4200
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "dynamichost:build:production"
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/rspack:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "dynamichost:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "dynamichost:serve:development"
+        },
+        "production": {
+          "serveTarget": "dynamichost:serve:production"
+        }
+      }
+    }
+  }
+}
